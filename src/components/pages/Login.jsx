@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode'
 import { Navigate, Link } from 'react-router-dom'
 import video from '../../images/background.mp4'
 import image from '../../images/picitupfinal.png'
+import promo from '../../images/promo.mp4'
 
 const serverUrl = `${process.env.REACT_APP_SERVER_URL}`
 
@@ -46,7 +47,7 @@ export default function Login({ currentUser, setCurrentUser }) {
   }
 
   if (currentUser) {
-    return <Navigate to="/profile" />
+    return <Navigate to='/profile' />
   }
 
   return (
@@ -56,62 +57,79 @@ export default function Login({ currentUser, setCurrentUser }) {
         autoPlay
         loop
         muted
-        className="fixed overflow-hidden max-w-[2400px] "
+        className='fixed overflow-hidden max-w-[2400px] '
       ></video>
-      <div className="max-w-4xl mx-auto  w-full overflow-hidden  bg-gray-100 flex flex-col justify-center min-h-full object-fill items-center h-screen">
-        <div className=" bg-gray-100  flex flex-col justify-center items-center rounded-3xl ">
-          <div className=" rounded-3xl mb-3 relative border-gray-300 w-80 pt-8 pb-5 flex flex-col items-center bg-gray-200">
-            <img width="250" src={image} alt="pic" />
+
+      <div className='max-w-4xl mx-auto  w-full overflow-hidden  bg-gray-100 flex flex-col justify-center min-h-full object-fill items-center h-screen'>
+        <div className='z-10 w-64 overflow-hidden pt-15 rounded-md pb-2'>
+          {/* <video
+            src={promo}
+            className='relative w-64 h-64 p-0 m-0 overflow-hidden rounded-md'
+          ></video> */}
+          <iframe
+            src='https://share.synthesia.io/embeds/videos/c36f31ea-7fc1-4bfc-b60e-cfc80194eb64'
+            loading='lazy'
+            title='Synthesia video player - Your AI video'
+            allow='encrypted-media; accelerometer; autoplay'
+            allowFullScreen
+            className='relative w-full h-full p-0 m-0 overflow-hidden'
+            // style='position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0; overflow:hidden;'
+          ></iframe>
+        </div>
+
+        <div className=' bg-gray-100  flex flex-col justify-center items-center rounded-3xl '>
+          <div className=' rounded-3xl mb-3 relative border-gray-300 w-80 pt-8 pb-5 flex flex-col items-center bg-gray-200'>
+            <img width='250' src={image} alt='pic' />
 
             <p>{msg}</p>
 
             <form
-              className="w-64 flex flex-col gap-1 mt-5 bg-gray-200"
+              className='w-64 flex flex-col gap-1 mt-5 bg-gray-200'
               onSubmit={handleSubmit}
             >
               {/* <label htmlFor="email">Email: </label> */}
               <input
-                className="w-full rounded border bg-gray-100 p-2 text-xs font-bold text-center"
-                type="email"
-                id="email"
-                placeholder="Email"
+                className='w-full rounded border bg-gray-100 p-2 text-xs font-bold text-center'
+                type='email'
+                id='email'
+                placeholder='Email'
                 onChange={e => setEmail(e.target.value)}
               />
 
               {/* changed the type to show password with text, otherwise hide password */}
               {/* <label htmlFor="password">Password: </label> */}
               <input
-                className="w-full rounded border bg-gray-100 p-2 text-xs text-center font-bold"
+                className='w-full rounded border bg-gray-100 p-2 text-xs text-center font-bold'
                 type={showPassword ? 'text' : 'password'}
-                id="password"
-                placeholder="Password"
+                id='password'
+                placeholder='Password'
                 onChange={e => setPassword(e.target.value)}
               />
 
               {/* show/hide password */}
               <button
                 onClick={e => pressShow(e)}
-                className="relative left-20 bottom-8 focus:text-gray-500 text-sm font-semibold mx-24 px-8 hover:animate-pulse"
+                className='relative left-20 bottom-8 focus:text-gray-500 text-sm font-semibold mx-24 px-8 hover:animate-pulse'
               >
                 show
               </button>
               <button
-                className="mt-2 text-sm text-center bg-blue-500 text-white py-1 rounded font-medium hover:animate-pulse"
-                type="submit"
+                className='mt-2 text-sm text-center bg-blue-500 text-white py-1 rounded font-medium hover:animate-pulse'
+                type='submit'
               >
                 Log In
               </button>
             </form>
-            <div className="flex space-x-2 w-64 mt-4 items-center">
-              <span className="bg-gray-300 h-px flex-1" />
-              <span className="p-2 uppercase text-xs text-gray-400 font-semibold">
+            <div className='flex space-x-2 w-64 mt-4 items-center'>
+              <span className='bg-gray-300 h-px flex-1' />
+              <span className='p-2 uppercase text-xs text-gray-400 font-semibold'>
                 or
               </span>
-              <span className="bg-gray-300 h-px flex-1" />
-              <div className="mr-1"></div>
+              <span className='bg-gray-300 h-px flex-1' />
+              <div className='mr-1'></div>
             </div>
-            <span className=" flex  justify-center flex-col mt-1 font-sans text-xl hover:animate-pulse">
-              <Link to="/register">Sign up</Link>
+            <span className=' flex  justify-center flex-col mt-1 font-sans text-xl hover:animate-pulse'>
+              <Link to='/register'>Sign up</Link>
             </span>
           </div>
         </div>
